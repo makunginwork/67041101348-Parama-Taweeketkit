@@ -48,7 +48,7 @@ export default defineConfig((/* ctx */) => {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/348-Parama-Taweeketkit/', // <--- แก้ไขบรรทัดนี้
+      publicPath: '/6704101348-Parama-Taweeketkit/', // <--- แก้ไขบรรทัดนี้
       // analyze: true,
       // env: {},
       // rawDefine: {}
