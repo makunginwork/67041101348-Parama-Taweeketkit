@@ -48,7 +48,7 @@ export default defineConfig((/* ctx */) => {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: '/348-Parama-Taweeketkit/', // <--- แก้ไขบรรทัดนี้
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -87,7 +87,7 @@ export default defineConfig((/* ctx */) => {
 
       // Quasar plugins
       plugins: [
-        'Notify' // <--- เพิ่มบรรทัดนี้ตามโจทย์
+        'Notify'
       ]
     },
 
@@ -127,7 +127,6 @@ export default defineConfig((/* ctx */) => {
 
       pwa: false
       // pwaOfflineHtmlFilename: 'offline.html', // do NOT use index.html as name!
-
       // pwaExtendGenerateSWOptions (cfg) {},
       // pwaExtendInjectManifestOptions (cfg) {}
     },
