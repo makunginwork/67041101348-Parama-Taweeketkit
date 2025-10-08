@@ -23,11 +23,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Quasar SPA
-        run: npx quasar build
+      - name: Build for production
+        run: yarn quasar build
+        env:
+          BASE_URL: /67041101348-Parama-Taweeketkit/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # ใช้ Token อัตโนมัติของ GitHub
           publish_dir: dist/spa # โฟลเดอร์ที่ได้จากการ build
