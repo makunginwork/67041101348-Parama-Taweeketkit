@@ -3,16 +3,17 @@ name: Deploy Quasar SPA to GitHub Pages
 
 on:
   push:
-    branches: [ "cicd" ] # <== แก้ไขจาก "master" เป็น "cicd"
+    branches: [ main ]
+
+permissions:
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # อนุญาตให้ Action เขียนข้อมูลลง repo (เพื่อสร้าง branch gh-pages)
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -21,13 +22,19 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
 
-      - name: Build Quasar SPA
-        run: npx quasar build
+      - name: Build Quasar for production
+        run: yarn quasar build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # ใช้ Token อัตโนมัติของ GitHub
-          publish_dir: dist/spa # โฟลเดอร์ที่ได้จากการ build
+          path: dist/spa
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
