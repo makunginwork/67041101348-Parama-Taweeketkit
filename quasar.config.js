@@ -86,7 +86,9 @@ export default defineConfig((/* ctx */) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify' // <--- เพิ่มบรรทัดนี้ตามโจทย์
+      ]
     },
 
     // animations: 'all', // --- includes all animations
